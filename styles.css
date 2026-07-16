@@ -1,10 +1,116 @@
+/* ---------- Reset & base ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #fbeee6;
+  --bg-soft: #f7e2d8;
+  --ink: #4a3441;
+  --ink-soft: #8a7480;
+  --accent: #e8657f;
+  --accent-deep: #d24c68;
+  --card: #ffffff;
+}
+
 html,
 body {
   height: 100%;
+}
+
+body {
+  font-family: "Nunito Sans", system-ui, sans-serif;
+  background: linear-gradient(170deg, var(--bg) 0%, var(--bg-soft) 100%);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+/* ---------- Layout ---------- */
+.scene {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* ---------- Text ---------- */
+.eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  line-height: 1.05;
+  text-wrap: balance;
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.title .line-1 {
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.title .line-2 {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ---------- Gift button ---------- */
+.gift-btn {
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+  color: var(--card);
+  background: var(--accent);
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.gift-btn:hover {
+  background: var(--accent-deep);
+  transform: translateY(-2px);
+}
+
+.gift-btn:active {
+  transform: translateY(0);
+}
+
+.gift-btn:focus-visible {
+  outline: 3px solid var(--accent-deep);
+  outline-offset: 3px;
+}
+
+/* ---------- Confetti canvas ---------- */
+#confetti {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .gift-btn {
+    transition: none;
+  }
 }
